@@ -31,7 +31,7 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
                 $year = $row['year'];
             } else {
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: fel.php");
                 exit();
             }
         } else {
@@ -46,7 +46,7 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
     $mysqli->close();
 } else {
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: fel.php");
     exit();
 }
 ?>
