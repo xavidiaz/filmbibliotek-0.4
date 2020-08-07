@@ -14,9 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate title
     $input_film = trim($_POST["film"]);
     if (empty($input_film)) {
-        $film_err = "Please enter a film.";
+        $film_err = "Ange en film.";
     } elseif (!filter_var($input_film, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\s]+$/")))) {
-        $film_err = "Please enter a valid film.";
+        $film_err = "Ange en giltig namnfilm.";
     } else {
         $film = $input_film;
     }
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate director
     $input_director = trim($_POST["director"]);
     if (empty($input_director)) {
-        $director_err = "Please enter an director.";
+        $director_err = "Ange en regissör.";
     } else {
         $director = $input_director;
     }
@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate year
     $input_year = trim($_POST["year"]);
     if (empty($input_year)) {
-        $year_err = "Please enter the year amount.";
+        $year_err = "Vänligen ange året.";
     } elseif (!ctype_digit($input_year)) {
-        $year_err = "Please enter a positive integer value.";
+        $year_err = "Vänligen ange ett giltigt år.";
     } else {
         $year = $input_year;
     }
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("location: index.php");
                 exit();
             } else {
-                echo "Something went wrong. Please try again later.";
+                echo "Något gick fel. Vänligen försök igen senare.";
             }
         }
 
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
-    <title>Create Record</title>
+    <title>Lägg till en film</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="/path/to/cdn/jquery.slim.min.js"></script>
 
@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Add a movie</h2>
+                        <h2>Lägga en film</h2>
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group <?php echo (!empty($film_err)) ? 'has-error' : ''; ?>">
@@ -132,13 +132,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="help-block"><?php echo $film_err; ?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
-                            <label>director</label>
+                            <label>Regissör</label>
                             <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
                             <span class="help-block"><?php echo $director_err; ?></span>
                         </div>
 
                         <div class="form-group">
-                            <label>category</label><br>
+                            <label>genre</label><br>
                             <select name="category">
                                 <?php
                                 while ($rows = $query->fetch_assoc()) {
@@ -152,13 +152,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
 
                         <div class="form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
-                            <label>year</label>
+                            <label>år</label>
                             <input type="number" name="year" id="year" class="form-control" value="<?php echo $year; ?>" min="1950" max="<?php echo date("Y"); ?>">
                             <span class="help-block"><?php echo $year_err; ?></span>
                         </div>
 
 
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Skicka">
                         <a href="index.php" class="btn btn-default">Cancel</a>
                     </form>
                 </div>

@@ -20,7 +20,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             header("location: index.php");
             exit();
         } else {
-            echo "Oops! Something went wrong. Please try again later.";
+            echo "hoppsan! Något gick fel. Vänligen försök igen senare.";
         }
     }
 
@@ -43,7 +43,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>View Record</title>
+    <title>Se film</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper {
@@ -64,10 +64,10 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger fade in">
                             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>" />
-                            <p>Are you sure you want to delete this Movie?</p><br>
+                            <p>Är du säker på att du vill ta bort den här filmen?</p><br>
                             <p>
-                                <input type="submit" value="Yes" class="btn btn-danger">
-                                <a href="index.php" class="btn btn-default">No</a>
+                                <input type="submit" value="Ja" class="btn btn-danger">
+                                <a href="index.php" class="btn btn-default">Nej</a>
                             </p>
                         </div>
                     </form>

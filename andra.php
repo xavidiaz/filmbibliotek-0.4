@@ -28,7 +28,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Validate director
     $input_director = trim($_POST["director"]);
     if (empty($input_director)) {
-        $director_err = "Please enter an director.";
+        $director_err = "Ange en regissör.";
     } else {
         $director = $input_director;
     }
@@ -37,9 +37,9 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Validate year
     $input_year = trim($_POST["year"]);
     if (empty($input_year)) {
-        $year_err = "Please enter the year amount.";
+        $year_err = "Ange ett år.";
     } elseif (!ctype_digit($input_year)) {
-        $year_err = "Please enter a positive integer value.";
+        $year_err = "Ange ett giltigt datumvärde.";
     } else {
         $year = $input_year;
     }
@@ -66,7 +66,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                 header("location: index.php");
                 exit();
             } else {
-                echo "Something went wrong. Please try again later.";
+                echo "Något gick fel. Vänligen försök igen senare.";
             }
         }
 
@@ -112,7 +112,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                     exit();
                 }
             } else {
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "hoppsan! Något gick fel. Vänligen försök igen senare.";
             }
         }
 
@@ -134,7 +134,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Update Record</title>
+    <title>Andra film</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper {
@@ -150,9 +150,9 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Update Record</h2>
+                        <h2>Ändra film</h2>
                     </div>
-                    <p>Please edit the input values and submit to update the record.</p>
+                    <p>Redigera inmatningsvärdena och skicka in för att uppdatera posten.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group <?php echo (!empty($film_err)) ? 'has-error' : ''; ?>">
@@ -162,13 +162,13 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                         </div>
 
                         <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
-                            <label>director</label>
+                            <label>regissör</label>
                             <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
                             <span class="help-block"><?php echo $director_err; ?></span>
                         </div>
 
                         <div class="form-group">
-                            <label>category</label><br>
+                            <label>genre</label><br>
                             <select name="category">
                                 <?php
                                 while ($rows = $query->fetch_assoc()) {
@@ -182,13 +182,13 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                         </div>
 
                         <div class="form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
-                            <label>year</label>
+                            <label>år</label>
                             <input type="number" name="year" class="form-control" value="<?php echo $year; ?>">
                             <span class="help-block"><?php echo $year_err; ?></span>
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>" />
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Skicka vidare">
                         <a href="index.php" class="btn btn-default">Cancel</a>
                     </form>
                 </div>

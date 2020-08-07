@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Fimlbibliotek</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Films</h2>
-                        <a href="skapa.php" class="btn btn-success pull-right">Add New Movie</a>
+                        <a href="skapa.php" class="btn btn-success pull-right">Lägg till ny film</a>
                     </div>
                     <?php
                     // Include config file
@@ -49,11 +49,11 @@
                             echo "<thead>";
                             echo "<tr>";
 
-                            echo "<th>title</th>";
-                            echo "<th>director</th>";
-                            echo "<th>category</th>";
-                            echo "<th>year</th>";
-                            echo "<th>Action</th>";
+                            echo "<th>titel</th>";
+                            echo "<th>regissör</th>";
+                            echo "<th>genre</th>";
+                            echo "<th>åf</th>";
+                            echo "<th>Handling</th>";
                             echo "</tr>";
                             echo "</thead>";
                             echo "<tbody>";
@@ -76,10 +76,10 @@
                             // Free result set
                             $result->free();
                         } else {
-                            echo "<p class='lead'><em>No records were found.</em></p>";
+                            echo "<p class='lead'><em>Inga filmer hittades.</em></p>";
                         }
                     } else {
-                        echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+                        echo "FEL: Det gick inte att köra $sql. " . $mysqli->error;
                     }
 
                     // Close connection
