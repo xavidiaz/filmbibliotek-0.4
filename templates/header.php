@@ -1,3 +1,6 @@
+<!-- Include config filev-->
+<?php include('config.php') ?>
+
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -36,7 +39,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
