@@ -3,8 +3,8 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$film = $director =  $year = "";
-$film_err = $director_err =  $year_err = "";
+$film = $director = $category =  $year = "";
+$film_err = $director_err =  $category_err = $year_err = "";
 
 // Categories Query
 $query = $mysqli->query("SELECT categories.cat_name, categories.cat_id FROM categories ORDER BY categories.cat_name ASC");
@@ -29,6 +29,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $director = $input_director;
     }
 
+    // Validate category
+    $input_category = trim($_POST["category"]);
+    if (empty($input_category)) {
+        $category_err = "Ange en genre.";
+    } else {
+        $category = $input_catetory;
+    }
+
+    echo "<pre>" . $category . "</pre>";
 
     // Validate year
     $input_year = trim($_POST["year"]);
@@ -58,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Set parameters
             $param_film = $film;
             $param_director = $director;
-            $param_category = htmlspecialchars($_POST['category']);
+            $param_category = $_POST['category'];
             $param_year = $year;
 
             // Attempt to execute the prepared statement
@@ -97,32 +106,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="text" name="film" class="form-control" value="<?php echo $film; ?>">
                         <span class="help-block"><?php echo $film_err; ?></span>
                     </div>
+
                     <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
                         <label>Regissör</label>
                         <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
                         <span class="help-block"><?php echo $director_err; ?></span>
                     </div>
+                    <div class="row">
+                        <div class="col my-1 form-group">
+                            <label class="mr-sm-2">genre</label><br>
+                            <select class="custom-select mr-sm-2" name='category' value='<?php echo $category; ?>'>
+                                <option selected>Välja...</option>
+                                <?php
+                                while ($rows = $query->fetch_assoc()) {
+                                    $category = $rows['cat_name'];
+                                    $category_id = $rows['cat_id'];
+                                    echo "<option value='$category_id'>$category</option>";
+                                }
+                                ?>
+                            </select>
+                            <span class="help-block"><?php echo $category_err; ?></span>
+                        </div>
 
-                    <div class="form-group">
-                        <label>genre</label><br>
-                        <select name="category">
-                            <?php
-                            while ($rows = $query->fetch_assoc()) {
-                                $category = $rows['cat_name'];
-                                $category_id = $rows['cat_id'];
-                                echo "<option value='$category_id'>$category</option>";
-                            }
-                            ?>
-                        </select>
-                        <span class="help-block"></span>
+                        <div class="col  mr-sm-2 form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
+                            <label class="mr-sm-2">år</label>
+                            <input type="number" name="year" id="year" class="form-control" value="<?php echo $year; ?>" min="1950" max="<?php echo date("Y"); ?>">
+                            <span class="help-block"><?php echo $year_err; ?></span>
+                        </div>
                     </div>
-
-                    <div class="form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
-                        <label>år</label>
-                        <input type="number" name="year" id="year" class="form-control" value="<?php echo $year; ?>" min="1950" max="<?php echo date("Y"); ?>">
-                        <span class="help-block"><?php echo $year_err; ?></span>
-                    </div>
-
 
                     <input type="submit" class="btn btn-primary" value="Skicka">
                     <a href="index.php" class="btn btn-default">Cancel</a>
@@ -131,6 +142,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </div>
+<pre><?php echo "this is category" . $category; ?>
+<?php echo $category_err; ?>
 
+<?php
+$val = $_POST['category'];
+echo "this is val: " . $val;
+?></pre>
 <!-- FOOTER -->
-<?include 'templates/footer.php' ?>
+<?php include 'templates/footer.php' ?>
