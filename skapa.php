@@ -80,91 +80,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<!-- HEADER -->
+<?php include('templates/header.php') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Lägg till en film</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <script src="/path/to/cdn/jquery.slim.min.js"></script>
-
-    <!--TO BE USED WITH TWITTER BOOTSTRAP-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css" />
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/bootstrap.min.js"></script>
-    <!-- end bootstrap and jquery plugins --->
-
-    <!-- Datepicker css and jquery -->
-    <link rel="stylesheet" type="text/css" href="css/datepicker.css" />
-    <script src="bootstrap-fulldatepicker.js"></script>
-    <script>
-        $(document).on("focus", ".yearpicker", function(e) {
-            $(this).datepicker({
-                format: "yyyy",
-                startDate: "01.01.2012",
-                viewMode: "years",
-                minViewMode: "years",
-            });
-        });
-    </script>
-
-    <style type="text/css">
-        .wrapper {
-            width: 500px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h2>Lägga en film</h2>
-                    </div>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($film_err)) ? 'has-error' : ''; ?>">
-                            <label>film</label>
-                            <input type="text" name="film" class="form-control" value="<?php echo $film; ?>">
-                            <span class="help-block"><?php echo $film_err; ?></span>
-                        </div>
-                        <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
-                            <label>Regissör</label>
-                            <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
-                            <span class="help-block"><?php echo $director_err; ?></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>genre</label><br>
-                            <select name="category">
-                                <?php
-                                while ($rows = $query->fetch_assoc()) {
-                                    $category = $rows['cat_name'];
-                                    $category_id = $rows['cat_id'];
-                                    echo "<option value='$category_id'>$category</option>";
-                                }
-                                ?>
-                            </select>
-                            <span class="help-block"></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
-                            <label>år</label>
-                            <input type="number" name="year" id="year" class="form-control" value="<?php echo $year; ?>" min="1950" max="<?php echo date("Y"); ?>">
-                            <span class="help-block"><?php echo $year_err; ?></span>
-                        </div>
-
-
-                        <input type="submit" class="btn btn-primary" value="Skicka">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
-                    </form>
+<!-- BODY -->
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h2>Lägga en film</h2>
                 </div>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group <?php echo (!empty($film_err)) ? 'has-error' : ''; ?>">
+                        <label>film</label>
+                        <input type="text" name="film" class="form-control" value="<?php echo $film; ?>">
+                        <span class="help-block"><?php echo $film_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
+                        <label>Regissör</label>
+                        <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
+                        <span class="help-block"><?php echo $director_err; ?></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>genre</label><br>
+                        <select name="category">
+                            <?php
+                            while ($rows = $query->fetch_assoc()) {
+                                $category = $rows['cat_name'];
+                                $category_id = $rows['cat_id'];
+                                echo "<option value='$category_id'>$category</option>";
+                            }
+                            ?>
+                        </select>
+                        <span class="help-block"></span>
+                    </div>
+
+                    <div class="form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
+                        <label>år</label>
+                        <input type="number" name="year" id="year" class="form-control" value="<?php echo $year; ?>" min="1950" max="<?php echo date("Y"); ?>">
+                        <span class="help-block"><?php echo $year_err; ?></span>
+                    </div>
+
+
+                    <input type="submit" class="btn btn-primary" value="Skicka">
+                    <a href="index.php" class="btn btn-default">Cancel</a>
+                </form>
             </div>
         </div>
     </div>
-</body>
+</div>
 
-</html>
+<!-- FOOTER -->
+<?php include('templates/footer.php') ?>

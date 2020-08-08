@@ -25,7 +25,7 @@
                         echo "<th>titel</th>";
                         echo "<th>regissör</th>";
                         echo "<th>genre</th>";
-                        echo "<th>åf</th>";
+                        echo "<th>år</th>";
                         echo "<th>Handling</th>";
                         echo "</tr>";
                         echo "</thead>";
@@ -62,6 +62,6 @@
         </div>
     </div>
 </div>
-</body>
 
-</html>
+<!-- FOOTER -->
+<?php include('templates/footer.php') ?>

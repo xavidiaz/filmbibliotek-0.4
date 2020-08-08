@@ -17,6 +17,6 @@
         </div>
     </div>
 </div>
-</body>
 
-</html>
+<!-- FOOTER -->
+<?php include('templates/footer.php') ?>

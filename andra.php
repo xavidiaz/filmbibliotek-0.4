@@ -183,6 +183,6 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         </div>
     </div>
 </div>
-</body>
 
-</html>
+<!-- FOOTER -->
+<?php include('templates/footer.php') ?>
