@@ -8,7 +8,7 @@
         <div class="col s12 m12 l12">
 
             <h2>Films</h2>
-            <a href="skapa.php" class="hoverable btn orange darken-2">Lägg till ny film</a>
+            <a href="skapa.php" class="btn orange darken-2">Lägg till ny film</a>
         </div>
         <?php
 
@@ -36,9 +36,9 @@
                     echo "<td>" . $row['cat_name'] . "</td>";
                     echo "<td>" . $row['year'] . "</td>";
                     echo "<td>";
-                    echo "<a href='film.php?id=" . $row['id'] . "'><i data-tooltip='Film detaljer' class='hoverable small material-icons orange-text text-darken-2'>remove_red_eye</i></a>";
-                    echo "<a href='andra.php?id=" . $row['id'] . "'><i  data-tooltip='Ändra Film' class='hoverable small material-icons orange-text text-darken-2'>mode_edit</i></a>";
-                    echo "<a href='radera.php?id=" . $row['id'] . "' ><i data-tooltip='Radera Film' class='hoverable small material-icons orange-text text-darken-2 tooltipped''>delete_forever</i></a>";
+                    echo "<a href='film.php?id=" . $row['id'] . "'><i data-tooltip='Film detaljer' class='small material-icons orange-text text-darken-2'>remove_red_eye</i></a>";
+                    echo "<a href='andra.php?id=" . $row['id'] . "'><i  data-tooltip='Ändra Film' class='small material-icons orange-text text-darken-2'>mode_edit</i></a>";
+                    echo "<a href='radera.php?id=" . $row['id'] . "' ><i data-tooltip='Radera Film' class='small material-icons orange-text text-darken-2 tooltipped''>delete_forever</i></a>";
                     echo "</td>";
                     echo "</tr>";
                 }
