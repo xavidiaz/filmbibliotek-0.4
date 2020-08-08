@@ -129,72 +129,60 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<!-- HEADER -->
+<?php include('templates/header.php') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Andra film</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        .wrapper {
-            width: 500px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h2>Ändra film</h2>
-                    </div>
-                    <p>Redigera inmatningsvärdena och skicka in för att uppdatera posten.</p>
-                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
-
-                        <div class="form-group <?php echo (!empty($film_err)) ? 'has-error' : ''; ?>">
-                            <label>film</label>
-                            <input type="text" name="film" class="form-control" value="<?php echo $film; ?>" readonly>
-                            <span class="help-block"><?php echo $film_err; ?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
-                            <label>regissör</label>
-                            <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
-                            <span class="help-block"><?php echo $director_err; ?></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>genre</label><br>
-                            <select name="category">
-                                <?php
-                                while ($rows = $query->fetch_assoc()) {
-                                    $category = $rows['cat_name'];
-                                    $category_id = $rows['cat_id'];
-                                    echo "<option value='$category_id'>$category</option>";
-                                }
-                                ?>
-                            </select>
-                            <span class="help-block"></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
-                            <label>år</label>
-                            <input type="number" name="year" class="form-control" value="<?php echo $year; ?>">
-                            <span class="help-block"><?php echo $year_err; ?></span>
-                        </div>
-
-                        <input type="hidden" name="id" value="<?php echo $id; ?>" />
-                        <input type="submit" class="btn btn-primary" value="Skicka vidare">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
-                    </form>
+<!-- BODY -->
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h2>Ändra film</h2>
                 </div>
+                <p>Redigera inmatningsvärdena och skicka in för att uppdatera posten.</p>
+                <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+
+                    <div class="form-group <?php echo (!empty($film_err)) ? 'has-error' : ''; ?>">
+                        <label>film</label>
+                        <input type="text" name="film" class="form-control" value="<?php echo $film; ?>" readonly>
+                        <span class="help-block"><?php echo $film_err; ?></span>
+                    </div>
+
+                    <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
+                        <label>regissör</label>
+                        <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
+                        <span class="help-block"><?php echo $director_err; ?></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>genre</label><br>
+                        <select name="category">
+                            <?php
+                            while ($rows = $query->fetch_assoc()) {
+                                $category = $rows['cat_name'];
+                                $category_id = $rows['cat_id'];
+                                echo "<option value='$category_id'>$category</option>";
+                            }
+                            ?>
+                        </select>
+                        <span class="help-block"></span>
+                    </div>
+
+                    <div class="form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
+                        <label>år</label>
+                        <input type="number" name="year" class="form-control" value="<?php echo $year; ?>">
+                        <span class="help-block"><?php echo $year_err; ?></span>
+                    </div>
+
+                    <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                    <input type="submit" class="btn btn-primary" value="Skicka vidare">
+                    <a href="index.php" class="btn btn-default">Cancel</a>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>
