@@ -1,8 +1,6 @@
 <?php
 // Process delete operation after confirmation
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
-    // Include config file
-    require_once "config.php";
 
     // Prepare a delete statement
     $sql = "DELETE FROM films WHERE id = ?";
@@ -38,43 +36,31 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<!-- HEADER -->
+<?php include('templates/header.php') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Se film</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        .wrapper {
-            width: 500px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h1>Delete Film</h1>
-                    </div>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="alert alert-danger fade in">
-                            <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>" />
-                            <p>Är du säker på att du vill ta bort den här filmen?</p><br>
-                            <p>
-                                <input type="submit" value="Ja" class="btn btn-danger">
-                                <a href="index.php" class="btn btn-default">Nej</a>
-                            </p>
-                        </div>
-                    </form>
+<!-- BODY -->
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Delete Film</h1>
                 </div>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="alert alert-danger fade in">
+                        <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>" />
+                        <p>Är du säker på att du vill ta bort den här filmen?</p><br>
+                        <p>
+                            <input type="submit" value="Ja" class="btn btn-danger">
+                            <a href="index.php" class="btn btn-default">Nej</a>
+                        </p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>
