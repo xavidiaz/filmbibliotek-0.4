@@ -1,6 +1,3 @@
-<!-- HEADER -->
-<?php include('templates/header.php') ?>
-
 <?php
 
 // Define variables and initialize with empty values
@@ -81,6 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<!-- HEADER -->
+<?php include('templates/header.php') ?>
 
 <!-- BODY -->
 <div class="wrapper">
