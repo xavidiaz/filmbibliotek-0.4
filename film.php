@@ -78,6 +78,6 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
             </div>
         </div>
     </div>
+    </body>
 
-    <!-- FOOTER -->
-    <?php include('templates/footer.php') ?>
+    </html>
