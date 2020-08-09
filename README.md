@@ -53,22 +53,22 @@ List of the movies in the library.
 ## [skapa.php](skapa.php)
 
 Create page.</br>
-Where you can add new movies to your library.
+POST FORM Worm Where you can add new movies to your library.
 
 ## [film.php](film.php)
 
 Read page.</br>
 Where you can view more in detail a selected film from your library.
 
-## [skapa.php](skapa.php)
-
-Create page.</br>
-Where you can add new movies to your library.
-
 ## [andra.php](andra.php)
 
 Update page.</br>
-Where you can update movies from your library.
+POST FORM Where you can update movies from your library.
+
+## [radera.php](radera.php)
+
+Delete page.</br>
+Where you can delete movies from your library.
 
 ## [config.php](config.php)
 
@@ -88,9 +88,13 @@ Project Documentation.
 
 Folder with images documentation.
 
+## [SQL/filmbibliotek.sql](SQL/filmbibliotek.sql)
+
+Database for instalation. **_ERASE AFTER INSTALLATION_**
+
 ## [SQL](SQL)
 
-Folder with SQL commmands examples.
+Folder with SQL commmands examples. **_ERASE AFTER INSTALLATION_**
 
 ## [CSS/style.css](CSS/style.css)
 
