@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <!-- HEADER -->
-<?php include('templates/header.php') ?>
+<?include 'templates/header.php' ?>
 
-<!-- BODY -->
+<!-- HTML -->
 <div class="wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -17,6 +16,6 @@
         </div>
     </div>
 </div>
-</body>
 
-</html>
+<!-- FOOTER -->
+<?include 'templates/footer.php' ?>

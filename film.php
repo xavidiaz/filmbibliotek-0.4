@@ -1,6 +1,8 @@
 <?php
 // Check existence of id parameter before processing further
 if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
+    // Include config file
+    require_once "config.php";
 
     // Prepare a select statement
 
@@ -49,9 +51,9 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
 }
 ?>
 <!-- HEADER -->
-<?php include('templates/header.php') ?>
+<?include 'templates/header.php' ?>
 
-<!-- BODY -->
+<!-- HTML -->
 <div class="wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -78,6 +80,6 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
             </div>
         </div>
     </div>
-    </body>
 
-    </html>
+    <!-- FOOTER -->
+    <?include 'templates/footer.php' ?>
