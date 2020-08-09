@@ -1,6 +1,4 @@
 <?php
-// Include config file
-require_once "config.php";
 
 // Process delete operation after confirmation
 if (isset($_POST["id"]) && !empty($_POST["id"])) {

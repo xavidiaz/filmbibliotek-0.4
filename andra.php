@@ -133,57 +133,57 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 <?include 'templates/header.php' ?>
 
 <!-- HTML -->
-<div class="wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-header">
-                    <h2>Ändra film</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>Ändra film</h2>
+            </div>
+
+            <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+
+                <div class="form-group <?php echo (!empty($film_err)) ? 'has-error' : ''; ?>">
+                    <label>titel</label>
+                    <input type="text" name="film" class="form-control" value="<?php echo $film; ?>" readonly>
+                    <span class="help-block"><?php echo $film_err; ?></span>
                 </div>
 
-                <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
+                    <label>regissör</label>
+                    <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
+                    <span class="help-block"><?php echo $director_err; ?></span>
+                </div>
+                <div class="row">
+                    <div class="col my-1 form-group">
+                        <label class="mr-sm-2">genre</label><br>
+                        <select class="custom-select mr-sm-2" name='category' class='form-control'>
+                            <?php
+                            while ($rows = $query->fetch_assoc()) {
+                                $category = $rows['cat_name'];
+                                $category_id = $rows['cat_id'];
+                                echo "<option value='$category_id'>$category</option>";
+                            }
+                            ?>
+                        </select>
 
-                    <div class="form-group <?php echo (!empty($film_err)) ? 'has-error' : ''; ?>">
-                        <label>titel</label>
-                        <input type="text" name="film" class="form-control" value="<?php echo $film; ?>" readonly>
-                        <span class="help-block"><?php echo $film_err; ?></span>
                     </div>
 
-                    <div class="form-group <?php echo (!empty($director_err)) ? 'has-error' : ''; ?>">
-                        <label>regissör</label>
-                        <input type="text" name="director" class="form-control" value="<?php echo $director; ?>">
-                        <span class="help-block"><?php echo $director_err; ?></span>
+                    <div class="col  mr-sm-2 form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
+                        <label class="mr-sm-2">år</label>
+                        <input type="number" name="year" id="year" class="form-control" value="<?php echo $year; ?>" min="1950" max="<?php echo date("Y"); ?>">
+                        <span class="help-block"><?php echo $year_err; ?></span>
                     </div>
-                    <div class="row">
-                        <div class="col my-1 form-group">
-                            <label class="mr-sm-2">genre</label><br>
-                            <select class="custom-select mr-sm-2" name='category' class='form-control'>
-                                <?php
-                                while ($rows = $query->fetch_assoc()) {
-                                    $category = $rows['cat_name'];
-                                    $category_id = $rows['cat_id'];
-                                    echo "<option value='$category_id'>$category</option>";
-                                }
-                                ?>
-                            </select>
+                </div>
 
-                        </div>
-
-                        <div class="col  mr-sm-2 form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
-                            <label class="mr-sm-2">år</label>
-                            <input type="number" name="year" id="year" class="form-control" value="<?php echo $year; ?>" min="1950" max="<?php echo date("Y"); ?>">
-                            <span class="help-block"><?php echo $year_err; ?></span>
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="id" value="<?php echo $id; ?>" />
-                    <input type="submit" class="btn btn-dark btn-lg" value="Spara">
-                    <a href="index.php" class="btn btn-outline-dark btn-lg">Avbryt</a>
-                </form>
-            </div>
+                <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                <input type="submit" class="btn btn-dark btn-lg" value="Spara">
+                <a href="index.php" class="btn btn-outline-dark btn-lg">Avbryt</a>
+            </form>
         </div>
     </div>
 </div>
+
 
 <!-- FOOTER -->
 <?include 'templates/footer.php' ?>
