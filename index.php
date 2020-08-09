@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="page-header clearfix">
                 <h2 class="pull-left">Films</h2>
-                <a href="skapa.php" class="btn btn-outline-dark btn-lg">Lägg till ny film</a>
+
             </div>
             <?php
             // Include config file
