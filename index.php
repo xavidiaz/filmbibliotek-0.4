@@ -4,11 +4,11 @@
 <!-- HTML -->
 <div class="container">
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12">
             <div class="page-header clearfix">
-                <h2 class="pull-left">Films</h2>
-                <a href="skapa.php" class="btn btn-outline-dark btn-lg">Lägg till ny film</a>
+                <h2 class="pull-left pl-3 pb-2">Films</h2>
+
             </div>
             <?php
             // Include config file
@@ -19,8 +19,8 @@
             if ($result = $mysqli->query($sql)) {
                 if ($result->num_rows > 0) {
 
-                    echo "<table class='table'>";
-                    echo "<thead class=''>";
+                    echo "<table class='table  table-striped table-hover'>";
+                    echo "<thead class='thead-dark'>";
                     echo "<tr>";
 
                     echo "<th>titel</th>";
@@ -39,9 +39,9 @@
                         echo "<td>" . $row['cat_name'] . "</td>";
                         echo "<td>" . $row['year'] . "</td>";
                         echo "<td>";
-                        echo "<a href='film.php?id=" . $row['id'] . "' title='Film Detaljer' data-toggle='tooltip'><i class='material-icons-outlined text-secondary'>remove_red_eye</i></a>";
-                        echo "<a href='andra.php?id=" . $row['id'] . "' title='Ändra Film' data-toggle='tooltip'><i class='material-icons-outlined text-secondary'>edit</i></span></a>";
-                        echo "<a href='radera.php?id=" . $row['id'] . "' title='Radera Film' data-toggle='tooltip'><i class='material-icons-outlined text-secondary'>delete_forever</i></a>";
+                        echo "<a href='film.php?id=" . $row['id'] . "' title='Film Detaljer' data-toggle='tooltip'><i class='material-icons-outlined text-secondary px-1'>remove_red_eye</i></a>";
+                        echo "<a href='andra.php?id=" . $row['id'] . "' title='Ändra Film' data-toggle='tooltip'><i class='material-icons-outlined text-secondary px-1'>edit</i></span></a>";
+                        echo "<a href='radera.php?id=" . $row['id'] . "' title='Radera Film' data-toggle='tooltip'><i class='material-icons-outlined text-secondary px-1'>delete_forever</i></a>";
                         echo "</td>";
                         echo "</tr>";
                     }

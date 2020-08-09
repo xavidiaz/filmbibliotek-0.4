@@ -84,10 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!-- HTML -->
 <div class="wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-header">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-9 mx-auto">
+                <div class="page-header mb-4">
                     <h2>Lägga en film</h2>
                 </div>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -123,9 +123,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="help-block"><?php echo $year_err; ?></span>
                         </div>
                     </div>
+                    <div class="row mt-5">
 
-                    <input type="submit" class="btn btn-dark btn-lg" value="Spara">
-                    <a href="index.php" class="btn btn-outline-dark btn-lg">Avbryt</a>
+                        <input type="submit" class="col btn btn-dark btn-lg btn-lg mx-2" value="Spara">
+                        <a href="index.php" class="col btn btn-outline-dark btn-lg mx-2">Avbryt</a>
+                    </div>
                 </form>
             </div>
         </div>

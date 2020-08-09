@@ -54,32 +54,26 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
 <?include 'templates/header.php' ?>
 
 <!-- HTML -->
-<div class="wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-header">
-                    <h1><?php echo $row["title"]; ?></h1>
-                </div>
-                <div class="form-group">
-                    <div class="form-group">
-                        <label>Director</label>
-                        <p class="form-control-static"><?php echo $row["director"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Category</label>
-                        <p class="form-control-static"><?php echo $row['cat_name']; ?></p>
-                    </div>
 
-                    <div class="form-group">
-                        <label>Year</label>
-                        <p class="form-control-static"><?php echo $row["year"]; ?></p>
-                    </div>
-                    <p><a href="index.php" class="btn btn-primary">bakåt</a></p>
+<div class="container">
+    <div class="row align-items-centeralign-items-center mt-5">
+        <div class="col-md-6 mx-auto">
+            <div class="card text-center">
+
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $row["title"]; ?></h5>
+                    <p class="card-text"><?php echo $row['director'] ?></p>
+                </div>
+                <div class="row card-footer text-muted mx-1 my-1">
+                    <p class="col card-text"><?php echo $row['cat_name']; ?></p>
+                    <p class="col form-control-static"><?php echo $row["year"]; ?></p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- FOOTER -->
-    <?include 'templates/footer.php' ?>
+
+
+<!-- FOOTER -->
+<?include 'templates/footer.php' ?>
