@@ -1,4 +1,7 @@
 <?php
+// Include config file
+require_once "config.php";
+
 // Process delete operation after confirmation
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Include config file
@@ -42,27 +45,27 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 <?include 'templates/header.php' ?>
 
 <!-- HTML -->
-<div class="wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-header">
-                    <h1>Delete Film</h1>
-                </div>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                    <div class="alert alert-danger fade in">
-                        <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>" />
-                        <p>Är du säker på att du vill ta bort den här filmen?</p><br>
-                        <p>
-                            <input type="submit" value="Ja" class="btn btn-danger">
-                            <a href="index.php" class="btn btn-default">Nej</a>
-                        </p>
-                    </div>
-                </form>
+
+<div class="container ">
+    <div class="row ">
+        <div class="col ">
+            <div class="">
+                <h1>Delete Film</h1>
             </div>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="alert alert-danger">
+                    <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>" />
+                    <h4>Är du säker på att du vill ta bort den här filmen?</h4><br>
+                    <p>
+                        <input type="submit" value="Ja" class="btn btn-danger btn-lg ">
+                        <a href="index.php" class="btn btn-outline-dark btn-lg ">Nej</a>
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
+
 <!-- FOOTER -->
-<?include 'templates/footer.php' ?>
+<?//include 'templates/footer.php' ?>

@@ -29,16 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $director = $input_director;
     }
 
-    // Validate category
-    $input_category = trim($_POST["category"]);
-    if (empty($input_category)) {
-        $category_err = "Ange en genre.";
-    } else {
-        $category = $input_catetory;
-    }
-
-    echo "<pre>" . $category . "</pre>";
-
     // Validate year
     $input_year = trim($_POST["year"]);
     if (empty($input_year)) {
@@ -67,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Set parameters
             $param_film = $film;
             $param_director = $director;
-            $param_category = $_POST['category'];
+            $param_category = htmlspecialchars($_POST['category']);
             $param_year = $year;
 
             // Attempt to execute the prepared statement
@@ -115,8 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="row">
                         <div class="col my-1 form-group">
                             <label class="mr-sm-2">genre</label><br>
-                            <select class="custom-select mr-sm-2" name='category' value='<?php echo $category; ?>'>
-                                <option selected>Välja...</option>
+                            <select class="custom-select mr-sm-2" name='category' class='form-control'>
                                 <?php
                                 while ($rows = $query->fetch_assoc()) {
                                     $category = $rows['cat_name'];
@@ -125,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 }
                                 ?>
                             </select>
-                            <span class="help-block"><?php echo $category_err; ?></span>
+
                         </div>
 
                         <div class="col  mr-sm-2 form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
@@ -135,19 +124,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
 
-                    <input type="submit" class="btn btn-primary" value="Skicka">
-                    <a href="index.php" class="btn btn-default">Cancel</a>
+                    <input type="submit" class="btn btn-dark btn-lg" value="Spara">
+                    <a href="index.php" class="btn btn-outline-dark btn-lg">Avbryt</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<pre><?php echo "this is category" . $category; ?>
-<?php echo $category_err; ?>
 
-<?php
-$val = $_POST['category'];
-echo "this is val: " . $val;
-?></pre>
+
+
 <!-- FOOTER -->
 <?php include 'templates/footer.php' ?>
